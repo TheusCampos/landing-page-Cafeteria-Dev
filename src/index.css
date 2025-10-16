@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Variáveis CSS para cores premium */
+  --color-primary-black: #000000;
+  --color-primary-brown: #2D1B14;
+  --color-secondary-gold: #D4AF37;
+  --color-accent-gold-bright: #FFD700;
+  --color-background-dark: #0A0A0A;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background-dark);
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary-brown);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-gold-bright);
+}
+
+/* Seleção de texto personalizada */
+::selection {
+  background-color: var(--color-secondary-gold);
+  color: var(--color-primary-black);
+}
+
+/* Componentes customizados */
+@layer components {
+  .btn-primary {
+    @apply bg-transparent border-2 border-secondary-gold text-secondary-gold px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-secondary-gold hover:text-primary-black hover:shadow-lg hover:animate-glow;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-gold text-primary-black px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-accent-gold-bright hover:shadow-xl;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-secondary-gold to-accent-gold-bright bg-clip-text text-transparent;
+  }
+  
+  .card-premium {
+    @apply bg-primary-brown/50 backdrop-blur-sm border border-secondary-gold/20 rounded-xl p-6 transition-all duration-300 hover:border-secondary-gold/40 hover:shadow-lg;
+  }
+  
+  .section-padding {
+    @apply py-20 px-4 md:px-8 lg:px-12;
+  }
+
+  /* Parallelogram card wrapper for modern angled look with rounded corners */
+  .parallelogram {
+    transform: skewX(-10deg);
+    border-radius: 0.75rem; /* rounded-xl equivalent */
+    overflow: hidden;
+  }
+
+  /* Counter-skew to keep internal content proportions and responsiveness */
+  .parallelogram-content {
+    transform: skewX(10deg);
+  }
+
+  /* Uniform card sizing across grid items (responsive fixed height) */
+  .uniform-card {
+    height: 14rem; /* h-56 */
+  }
+  @media (min-width: 768px) {
+    .uniform-card { height: 16rem; } /* md:h-64 */
+  }
+  @media (min-width: 1024px) {
+    .uniform-card { height: 18rem; } /* lg:h-72 */
+  }
+
+  .uniform-card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* p-4 */
+  }
+}
